@@ -1,4 +1,4 @@
-3
+5
 10:00 22:00
 15
 09:45 1 clientA
@@ -12,7 +12,11 @@
 10:45 3 clientD 
 10:50 1 clientE
 10:55 3 clientE
+10:55 2 clientE 4
 11:00 1 clientF
 11:00 3 clientF
+11:00 2 clientF 5
 12:00 1 clientG
 12:30 3 clientG
+15:53 4 clientF
+15:56 4 clientG
