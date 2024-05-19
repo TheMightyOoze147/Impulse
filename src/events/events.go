@@ -259,22 +259,25 @@ func ServiceClosed(clientsDB []Client, tablesDB []Table, endTime time.Time, pric
 			client.LeavedTime = endTime
 		}
 
-		intTableNumber, _ := strconv.Atoi(client.Table.Number)
-		table := &tablesDB[intTableNumber-1]
+		if client.Table.IsBusy {
 
-		duration := client.LeavedTime.Sub(client.ArrivedTime)
-		table.InWork += duration
-		table.IsBusy = false
+			intTableNumber, _ := strconv.Atoi(client.Table.Number)
+			table := &tablesDB[intTableNumber-1]
 
-		hours := int(duration.Hours())
-		minutes := int(duration.Minutes()) % 60
-		if minutes > 0 {
-			hours++
+			duration := client.LeavedTime.Sub(client.ArrivedTime)
+			table.InWork += duration
+			table.IsBusy = false
+
+			hours := int(duration.Hours())
+			minutes := int(duration.Minutes()) % 60
+			if minutes > 0 {
+				hours++
+			}
+			table.Earnings += hours * price
+
+			client.Table = *table
+			clientsDB[i] = client
 		}
-		table.Earnings += hours * price
-
-		client.Table = *table
-		clientsDB[i] = client
 	}
 
 	return clientsDB, tablesDB
