@@ -33,7 +33,7 @@ func main() {
 		_, queue = events.EventProcessing(eventsDB[event], clientsDB, queue, tablesDB, open, closed)
 	}
 
-	clientsDB, tablesDB = events.ServiceClosed(clientsDB, tablesDB, closed, price)
+	events.ServiceClosed(clientsDB, tablesDB, closed, price)
 
 	fmt.Println(closed.Format("15:04"))
 	for id, table := range tablesDB {
