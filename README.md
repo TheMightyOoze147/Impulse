@@ -103,3 +103,65 @@ go build -o ./build/main src/main/main.go
         3 90 08:01
 
 </details>
+
+### Результаты тестов
+
+<details>
+    <summary>Пакет datafromfile</summary>
+        go test -v -cover
+        === RUN   TestReadFile
+        --- PASS: TestReadFile (0.00s)
+        === RUN   TestParsePCNumber
+        --- PASS: TestParsePCNumber (0.00s)
+        === RUN   TestParseTimeRange
+        --- PASS: TestParseTimeRange (0.00s)
+        === RUN   TestParsePrice
+        --- PASS: TestParsePrice (0.00s)
+        PASS
+        coverage: 75.9% of statements
+        ok      github.com/TheMightyOoze147/main/src/datafromfile       0.002s
+
+</details>
+
+<details>
+    <summary>Пакет events</summary>
+        go test -v -cover
+        === RUN   TestNewEvent
+        --- PASS: TestNewEvent (0.00s)
+        === RUN   TestEventDatabase
+        --- PASS: TestEventDatabase (0.00s)
+        === RUN   TestFindFreeTables
+        --- PASS: TestFindFreeTables (0.00s)
+        === RUN   TestTableDatabase
+        --- PASS: TestTableDatabase (0.00s)
+        === RUN   TestClientDatabase
+        --- PASS: TestClientDatabase (0.00s)
+        === RUN   TestFindInClientDBByName
+        --- PASS: TestFindInClientDBByName (0.00s)
+        === RUN   TestFindInClientDBByTableNumber
+        --- PASS: TestFindInClientDBByTableNumber (0.00s)
+        === RUN   TestClientArrived
+        12:00 1 John
+        --- PASS: TestClientArrived (0.00s)
+        === RUN   TestClientTakeASeat
+        12:00 2 John 1
+        --- PASS: TestClientTakeASeat (0.00s)
+        === RUN   TestClientIsWaiting
+        12:00 3 John
+        12:00 13 ICanWaitNoLonger!
+        --- PASS: TestClientIsWaiting (0.00s)
+        === RUN   TestClientLeaved
+        12:00 4 John
+        --- PASS: TestClientLeaved (0.00s)
+        === RUN   TestEventProcessing
+        12:00 1 John
+        --- PASS: TestEventProcessing (0.00s)
+        === RUN   TestServiceClosed
+        14:00 11 Jane
+        14:00 11 John
+        --- PASS: TestServiceClosed (0.00s)
+        PASS
+        coverage: 67.5% of statements
+        ok      github.com/TheMightyOoze147/main/src/events     0.005s
+
+</details>
