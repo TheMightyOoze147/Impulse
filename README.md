@@ -63,6 +63,17 @@ docker run --rm -v $(pwd)/scenaries/scenario.txt:/app/scenaries/scenario.txt app
 ```bash
 go run src/main/main scenaries/scenario.txt
 ```
+Это запустит программу.
+
+Либо же использовать команду для сборки проекта в исходный файл: 
+```bash
+go build -o ./build/main src/main/main.go
+```
+Это создаст исполняемый файл main.exe, который можно запустить с помощью: 
+```bash
+./build/main scenaries/scenario.txt
+```
+
 <details>
     <summary>Вывод</summary>
     
