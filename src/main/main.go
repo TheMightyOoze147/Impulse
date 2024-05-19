@@ -23,12 +23,13 @@ func main() {
 	open, closed := data.ParseTimeRange(dataFromFile[1])
 	price := data.ParsePrice(dataFromFile[2])
 
+	// Создаём "базы данных" - слайсы со столами, ивентами и клиентами
 	tablesDB := events.TableDatabase(pcNumber)
 	eventsDB := events.EventDatabase(dataFromFile)
 	clientsDB := events.ClientDatabase(eventsDB)
 	queue := make([]events.Client, 0)
 
-	fmt.Println(open.Format("15:04"))
+	fmt.Println(open.Format("15:04")) // Вынужденное форматирование вывода времени
 	for event := range eventsDB {
 		_, queue = events.EventProcessing(eventsDB[event], clientsDB, queue, tablesDB, open, closed)
 	}
