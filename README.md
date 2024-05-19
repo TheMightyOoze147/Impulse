@@ -108,6 +108,7 @@ go build -o ./build/main src/main/main.go
 
 <details>
     <summary>Пакет datafromfile</summary>
+    
         go test -v -cover
         === RUN   TestReadFile
         --- PASS: TestReadFile (0.00s)
@@ -125,6 +126,7 @@ go build -o ./build/main src/main/main.go
 
 <details>
     <summary>Пакет events</summary>
+
         go test -v -cover
         === RUN   TestNewEvent
         --- PASS: TestNewEvent (0.00s)

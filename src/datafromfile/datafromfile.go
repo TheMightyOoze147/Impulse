@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// Чтение данных из файла, возвращает массив строк
 func ReadFile(filePath string) (lines []string) {
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -31,6 +32,7 @@ func ReadFile(filePath string) (lines []string) {
 	return lines
 }
 
+// Парсинг номера - в будущем для обозначения количества столов
 func ParsePCNumber(number string) int {
 	num, err := strconv.Atoi(number)
 	if err != nil {
@@ -40,6 +42,7 @@ func ParsePCNumber(number string) int {
 	return num
 }
 
+// Парсинг времени открытия и времени закрытия
 func ParseTimeRange(timeRange string) (time.Time, time.Time) {
 	parts := strings.Split(timeRange, " ")
 	if len(parts) != 2 {
@@ -59,6 +62,7 @@ func ParseTimeRange(timeRange string) (time.Time, time.Time) {
 	return firstTime, secondTime
 }
 
+// Парсинг цены за один час работы за столом
 func ParsePrice(value string) int {
 	price, err := strconv.Atoi(value)
 	if err != nil {
