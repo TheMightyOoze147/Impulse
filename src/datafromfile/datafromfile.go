@@ -43,7 +43,7 @@ func ParsePCNumber(number string) int {
 func ParseTimeRange(timeRange string) (time.Time, time.Time) {
 	parts := strings.Split(timeRange, " ")
 	if len(parts) != 2 {
-		log.Fatal(fmt.Errorf("Bad format: %s", timeRange))
+		log.Fatal(fmt.Errorf("bad format: %s", timeRange))
 	}
 
 	firstTime, err := time.Parse("15:04", parts[0])
