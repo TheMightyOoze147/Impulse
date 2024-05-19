@@ -35,7 +35,7 @@ type Client struct {
 func NewEvent(event string) Event {
 	parts := strings.Split(event, " ")
 	if len(parts) < 3 || len(parts) > 4 {
-		log.Fatal(fmt.Errorf("Bad format: %s", event))
+		log.Fatal(fmt.Errorf("bad format: %s", event))
 	}
 
 	arrivedTime, err := time.Parse("15:04", parts[0])
@@ -77,7 +77,7 @@ func NewTable(num string) Table {
 
 func FindFreeTables(tablesDB []Table) (Table, error) {
 	for _, table := range tablesDB {
-		if table.IsBusy == false {
+		if !table.IsBusy {
 			return table, nil
 		}
 	}
@@ -86,7 +86,7 @@ func FindFreeTables(tablesDB []Table) (Table, error) {
 }
 
 func TableDatabase(tablesNum int) (tablesDB []Table) {
-	for i := range tablesNum {
+	for i := 0; i < tablesNum; i++ {
 		tablesDB = append(tablesDB, NewTable(strconv.Itoa(i+1)))
 	}
 
@@ -134,10 +134,10 @@ func ClientDatabase(eventsPool []Event) (clientsPool []Client) {
 
 func ClientArrived(event Event, client Client, startTime time.Time, endTime time.Time) Client {
 	fmt.Println(event.ArrivedTime.Format("15:04"), event.Event, event.Name)
-	if event.ArrivedTime.After(startTime) && event.ArrivedTime.Before(endTime) && client.IsVisited == false {
+	if event.ArrivedTime.After(startTime) && event.ArrivedTime.Before(endTime) && !client.IsVisited {
 		client.ArrivedTime = event.ArrivedTime
 		client.IsVisited = true
-	} else if client.IsVisited == true {
+	} else if client.IsVisited {
 		fmt.Println(event.ArrivedTime.Format("15:04"), "13", "YouShallNotPass")
 	} else {
 		fmt.Println(event.ArrivedTime.Format("15:04"), "13", "NotOpenYet")
@@ -148,7 +148,7 @@ func ClientArrived(event Event, client Client, startTime time.Time, endTime time
 
 func ClientTakeASeat(event Event, client Client, tablesDB []Table, isFree error) Client {
 	fmt.Println(event.ArrivedTime.Format("15:04"), event.Event, event.Name, event.TableNum)
-	if client.IsVisited == true {
+	if client.IsVisited {
 		if isFree != nil {
 			tableID, _ := strconv.Atoi(event.TableNum)
 			tablesDB[tableID-1].IsBusy = true
@@ -170,7 +170,7 @@ func ClientIsWaiting(event Event, client Client, queue []Client, tablesDB []Tabl
 		fmt.Println(event.ArrivedTime.Format("15:04"), "11", event.Name)
 		client.IsVisited = false
 		client.LeavedTime = event.ArrivedTime
-	} else if client.IsVisited == false {
+	} else if !client.IsVisited {
 		fmt.Println(event.ArrivedTime.Format("15:04"), "13", "ClientUnknown")
 	} else {
 		_, err := FindFreeTables(tablesDB)
@@ -186,7 +186,7 @@ func ClientIsWaiting(event Event, client Client, queue []Client, tablesDB []Tabl
 
 func ClientLeaved(event Event, client Client, clientsDB []Client, queue []Client, tablesDB []Table) (Client, []Client) {
 	fmt.Println(event.ArrivedTime.Format("15:04"), event.Event, event.Name)
-	if client.IsVisited == false {
+	if !client.IsVisited {
 		fmt.Println(event.ArrivedTime.Format("15:04"), "13", "ClientUnknown")
 	} else {
 		if len(queue) != 0 {
