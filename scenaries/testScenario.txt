@@ -1,0 +1,18 @@
+3
+10:00 22:00
+15
+09:45 1 clientA
+10:05 1 clientA
+10:15 1 clientB
+10:20 2 clientA 1
+10:25 2 clientB 2
+10:30 1 clientC
+10:35 2 clientC 3
+10:40 1 clientD
+10:45 3 clientD 
+10:50 1 clientE
+10:55 3 clientE 3
+11:00 1 clientF
+11:00 3 clientF
+12:00 1 clientG
+12:30 3 clientG
