@@ -1,6 +1,11 @@
 # Тестовое задание на стажировку Импульс 2024
 
 Версия GO: 1.19. Запуск производился на ОС Ubuntu.
+
+# Структура
+
+В файле [datafromfile.go](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/datafromfile/datafromfile.go) описан парсер, который собирает информацию из переданного файла. 
+В файле [events.go](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/events/events.go) описаны функции для обработки действий, спаршенных из файла.
 ### Запуск в контейнере
 
 [![dockgo](https://skillicons.dev/icons?i=docker,go)](https://skillicons.dev)
