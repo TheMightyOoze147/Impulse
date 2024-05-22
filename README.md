@@ -4,8 +4,11 @@
 
 # Структура
 
-В файле [datafromfile.go](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/datafromfile/datafromfile.go) описан парсер, который собирает информацию из переданного файла. 
-В файле [events.go](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/events/events.go) описаны функции для обработки действий, спаршенных из файла.
+В директории [datafromfile](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/datafromfile) описан пакет-парсер, который собирает информацию из переданного файла, а так же тесты к нему.
+В директории [events](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/events) описан пакет для обработки действий, спаршенных из файла, а так же тесты к нему.
+В директории [main](https://github.com/TheMightyOoze147/Impulse_go/tree/main/main) расположена точка входа в программу.
+В директории [scenaries](https://github.com/TheMightyOoze147/Impulse_go/tree/main/scenaries) описан сценарий из ТЗ и ещё пара тестовых сценариев.
+
 ### Запуск в контейнере
 
 [![dockgo](https://skillicons.dev/icons?i=docker,go)](https://skillicons.dev)
