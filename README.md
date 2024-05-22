@@ -6,7 +6,9 @@
 
 В директории [datafromfile](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/datafromfile) описан пакет-парсер, который собирает информацию из переданного файла, а так же тесты к нему.
 В директории [events](https://github.com/TheMightyOoze147/Impulse_go/blob/main/src/events) описан пакет для обработки действий, спаршенных из файла, а так же тесты к нему.
+
 В директории [main](https://github.com/TheMightyOoze147/Impulse_go/tree/main/main) расположена точка входа в программу.
+
 В директории [scenaries](https://github.com/TheMightyOoze147/Impulse_go/tree/main/scenaries) описан сценарий из ТЗ и ещё пара тестовых сценариев.
 
 ### Запуск в контейнере
