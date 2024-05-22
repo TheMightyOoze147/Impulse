@@ -108,6 +108,130 @@ go build -o ./build/main src/main/main.go
 ### Результаты тестов
 
 <details>
+    <summary>Тестовый файл testScenario.txt</summary>
+
+    Входные данные
+    3
+    10:00 22:00
+    15
+    09:45 1 clientA
+    10:05 1 clientA
+    10:15 1 clientB
+    10:20 2 clientA 1
+    10:25 2 clientB 2
+    10:30 1 clientC
+    10:35 2 clientC 3
+    10:40 1 clientD
+    10:45 3 clientD 
+    10:50 1 clientE
+    10:55 3 clientE
+    11:00 1 clientF
+    11:00 3 clientF
+    12:00 1 clientG
+    12:30 3 clientG
+
+    Выходные данные
+    10:00
+    09:45 1 clientA
+    09:45 13 NotOpenYet
+    10:05 1 clientA
+    10:15 1 clientB
+    10:20 2 clientA 1
+    10:25 2 clientB 2
+    10:30 1 clientC
+    10:35 2 clientC 3
+    10:40 1 clientD
+    10:45 3 clientD
+    10:50 1 clientE
+    10:55 3 clientE
+    11:00 1 clientF
+    11:00 3 clientF
+    12:00 1 clientG
+    12:30 3 clientG
+    12:30 11 clientG
+    22:00 11 clientA
+    22:00 11 clientB
+    22:00 11 clientC
+    22:00 11 clientD
+    22:00 11 clientE
+    22:00 11 clientF
+    22:00 11 clientG
+    22:00
+    1 180 11:40
+    2 180 11:35
+    3 180 11:25
+
+</details>
+
+<details>
+    <summary>Тестовый файл testScenario2.txt</summary>
+
+    Входные данные
+    5
+    10:00 22:00
+    15
+    09:45 1 clientA
+    10:05 1 clientA
+    10:15 1 clientB
+    10:20 2 clientA 1
+    10:25 2 clientB 2
+    10:30 1 clientC
+    10:35 2 clientC 3
+    10:40 1 clientD
+    10:45 3 clientD 
+    10:50 1 clientE
+    10:55 3 clientE
+    10:55 2 clientE 4
+    11:00 1 clientF
+    11:00 3 clientF
+    11:00 2 clientF 5
+    12:00 1 clientG
+    12:30 3 clientG
+    15:53 4 clientF
+    15:56 4 clientG
+
+    Выходные данные
+    10:00
+    09:45 1 clientA
+    09:45 13 NotOpenYet
+    10:05 1 clientA
+    10:15 1 clientB
+    10:20 2 clientA 1
+    10:25 2 clientB 2
+    10:30 1 clientC
+    10:35 2 clientC 3
+    10:40 1 clientD
+    10:45 3 clientD
+    10:45 13 ICanWaitNoLonger!
+    10:50 1 clientE
+    10:55 3 clientE
+    10:55 13 ICanWaitNoLonger!
+    10:55 2 clientE 4
+    11:00 1 clientF
+    11:00 3 clientF
+    11:00 13 ICanWaitNoLonger!
+    11:00 2 clientF 5
+    12:00 1 clientG
+    12:30 3 clientG
+    15:53 4 clientF
+    15:53 12 clientG 5
+    15:56 4 clientG
+    22:00 11 clientA
+    22:00 11 clientB
+    22:00 11 clientC
+    22:00 11 clientD
+    22:00 11 clientE
+    22:00
+    1 180 11:40
+    2 180 11:35
+    3 180 11:25
+    4 180 11:05
+    5 90 04:56
+
+
+</details>
+
+<details>
     <summary>Пакет datafromfile</summary>
     
         go test -v -cover
